@@ -3,27 +3,38 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
+variable "environment" {
+  description = "Environment name"
+  type        = string
+  default     = "dev"
+}
+
+variable "project_name" {
+  description = "Project name"
+  type        = string
+  default     = "s3-csv-pipeline"
+}
+
+variable "lambda_timeout" {
+  description = "Lambda function timeout in seconds"
+  type        = number
+  default     = 30
+}
+
+variable "lambda_memory_size" {
+  description = "Lambda function memory size in MB"
+  type        = number
+  default     = 128
+}
+
 variable "input_bucket_name" {
-  description = "Name of the S3 bucket for input CSV files"
-  default     = "my-unique-csv-input-bucket-12345"  # Change to something unique
+  description = "Base name for input bucket"
+  type        = string
+  default     = "input"
 }
 
 variable "processed_bucket_name" {
-  description = "Name of the S3 bucket for processed data"
-  default     = "my-unique-csv-processed-bucket-12345"  # Change to something unique
-}
-
-variable "lambda_function_name" {
-  description = "Name of the Lambda function"
-  default     = "csv-processor"
-}
-
-variable "athena_database_name" {
-  description = "Name of the Athena database"
-  default     = "csv_processor_db"
-}
-
-variable "athena_table_name" {
-  description = "Name of the Athena table"
-  default     = "processed_csv_data"
+  description = "Base name for processed bucket"
+  type        = string
+  default     = "processed"
 }
